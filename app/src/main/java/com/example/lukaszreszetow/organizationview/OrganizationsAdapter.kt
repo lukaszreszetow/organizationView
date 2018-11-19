@@ -1,20 +1,28 @@
 package com.example.lukaszreszetow.organizationview
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.nex3z.notificationbadge.NotificationBadge
 import kotlinx.android.synthetic.main.organization_item.view.*
 
 class OrganizationsAdapter(
     val organizations: List<MainActivity.OrganizationListObject>,
-    val context: Context
+    val context: Context,
+    val listener: OrganizationInterface
 ) :
     RecyclerView.Adapter<OrganizationsAdapter.ViewHolder>() {
+
+    interface OrganizationInterface {
+        fun organizedPicked(organizationId: Int)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(context).inflate(
@@ -34,6 +42,9 @@ class OrganizationsAdapter(
             addFindMoreButton(holder)
         } else {
             val organizationObject = organizations[position]
+            holder?.container?.setOnClickListener {
+                listener.organizedPicked(position)
+            }
             holder?.name?.text = organizationObject.organization.name
             when {
                 organizationObject.isThisInvitation -> {
@@ -67,5 +78,6 @@ class OrganizationsAdapter(
         val icon: ImageView = view.followed_organization_icon
         val name: TextView = view.followed_organization_name
         val badge: NotificationBadge = view.organizationBadge
+        val container: RelativeLayout = view.sliderOrganizationTemplate
     }
 }

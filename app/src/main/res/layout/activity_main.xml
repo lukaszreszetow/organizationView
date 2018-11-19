@@ -35,6 +35,11 @@
             android:background="@color/white"
             android:orientation="vertical">
 
+            <include
+                android:visibility="gone"
+                android:id="@+id/organizationDetailsLayout"
+                layout="@layout/organization_details_view"/>
+
             <LinearLayout
                 android:id="@+id/sliderHeaderContainer"
                 android:layout_width="match_parent"

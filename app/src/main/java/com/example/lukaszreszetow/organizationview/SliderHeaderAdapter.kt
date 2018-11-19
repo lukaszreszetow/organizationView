@@ -15,16 +15,6 @@ class SliderHeaderAdapter(
     val context: Context
 ) : RecyclerView.Adapter<SliderHeaderAdapter.ViewHolder>() {
 
-    init {
-        itemsList.add(
-            MainActivity.OrganizationListObject(
-                MainActivity.Organization("findMoreButton"),
-                false,
-                false
-            )
-        )
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         return SliderHeaderAdapter.ViewHolder(
             LayoutInflater.from(context).inflate(
@@ -36,15 +26,15 @@ class SliderHeaderAdapter(
     }
 
     override fun getItemCount(): Int {
-        return itemsList.size
+        return itemsList.size + 1
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        val item = itemsList[position]
-        if (item.organization.name == "findMoreButton") {
+        if (position == itemsList.size) {
             holder?.badge?.clear()
             holder?.icon?.setImageDrawable(context.getDrawable(R.drawable.andrzej))
         } else {
+            val item = itemsList[position]
             holder?.icon?.setImageDrawable(context.getDrawable(R.drawable.icon_mockup))
             when {
                 item.isThisInvitation -> {

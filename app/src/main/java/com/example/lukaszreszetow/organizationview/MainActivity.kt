@@ -7,11 +7,17 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.organization_item.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OrganizationsAdapter.OrganizationInterface {
+
+    override fun organizedPicked(organizationId: Int) {
+        Toast.makeText(this, "Kliknieto organizacje numer : $organizationId!", Toast.LENGTH_LONG)
+            .show()
+    }
 
     var sortedList: List<OrganizationListObject> = listOf()
 
@@ -58,20 +64,16 @@ class MainActivity : AppCompatActivity() {
             val screenHeight = calculateHeightOfScreen()
             val params = slidingOrganizationsGridList.layoutParams as LinearLayout.LayoutParams
             params.height = (screenHeight * slidingLayout.anchorPoint).toInt() -
-                    sliderHeaderContainer.height - 80
+                    sliderHeaderContainer.height
             slidingOrganizationsGridList.layoutParams = params
         }
         slidingOrganizationsGridList.layoutManager = GridLayoutManager(this, 3)
-        slidingOrganizationsGridList.adapter = OrganizationsAdapter(sortedList, this)
+        slidingOrganizationsGridList.adapter = OrganizationsAdapter(sortedList, this, this)
     }
 
     private fun setInvitationsFirstInList() {
         sortedList =
                 fakeDataOrganizations.sortedBy { !it.hasNews }.sortedBy { !it.isThisInvitation }
-    }
-
-    fun dpFromPx(px: Float): Int {
-        return (px / resources.displayMetrics.density).toInt()
     }
 
     data class Organization(val name: String)
@@ -89,12 +91,10 @@ class MainActivity : AppCompatActivity() {
                 OrganizationListObject(Organization("OrganizacjaDwa"), true, false),
                 OrganizationListObject(Organization("OrganizacjaDwa"), true, false),
                 OrganizationListObject(Organization("Krotka"), false, false),
-                OrganizationListObject(Organization("Organija piec"), false, false),
-                OrganizationListObject(Organization("Organija piec"), false, true),
-                OrganizationListObject(Organization("Organija piec"), false, true),
-                OrganizationListObject(Organization("Organija piec"), false, false),
-                OrganizationListObject(Organization("Organija piec"), false, false),
-                OrganizationListObject(Organization("Organija piec"), false, false),
+                OrganizationListObject(Organization("Organija piecdsadasdasdasd"), false, false),
+                OrganizationListObject(Organization("Organija piecdsadasdsada"), false, true),
+                OrganizationListObject(Organization("Organija piecdsadasdasd"), false, true),
+                OrganizationListObject(Organization("Organija piecdsaasdsadsadas"), false, false),
                 OrganizationListObject(Organization("To jest organizacja numer szesc"), true, false)
             )
     }

@@ -42,6 +42,7 @@ class SliderHeaderAdapter(
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val item = itemsList[position]
         if (item.organization.name == "findMoreButton") {
+            holder?.badge?.clear()
             holder?.icon?.setImageDrawable(context.getDrawable(R.drawable.andrzej))
         } else {
             holder?.icon?.setImageDrawable(context.getDrawable(R.drawable.icon_mockup))

@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.organization_item.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -53,15 +54,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupGridList() {
-        val screenHeight = calculateHeightOfScreen()
-        val params = slidingOrganizationsGridList.layoutParams as LinearLayout.LayoutParams
         sliderHeaderContainer.viewTreeObserver.addOnGlobalLayoutListener {
+            val screenHeight = calculateHeightOfScreen()
+            val params = slidingOrganizationsGridList.layoutParams as LinearLayout.LayoutParams
             params.height = (screenHeight * slidingLayout.anchorPoint).toInt() -
-                    sliderHeaderContainer.height
+                    sliderHeaderContainer.height - 80
             slidingOrganizationsGridList.layoutParams = params
-//            var locations = IntArray(2)
-//            sliderHeaderContainer.getLocationOnScreen(locations)
-//            params.height = screenHeight - locations[1]
         }
         slidingOrganizationsGridList.layoutManager = GridLayoutManager(this, 3)
         slidingOrganizationsGridList.adapter = OrganizationsAdapter(sortedList, this)

@@ -14,9 +14,9 @@
         android:id="@+id/sliderHeaderIconContainer"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:padding="4dp"
-        android:layout_centerHorizontal="true">
+        android:padding="4dp">
 
         <ImageView
             android:id="@+id/sliderHeaderIcon"
@@ -34,6 +34,7 @@
         android:layout_marginLeft="-20dp"
         android:layout_marginTop="3dp"
         android:layout_toRightOf="@+id/sliderHeaderIconContainer"
+        app:nbAnimationEnabled="false"
         app:nbBackground="@drawable/badge_background"
         app:nbMaxTextLength="2" />
 </RelativeLayout>

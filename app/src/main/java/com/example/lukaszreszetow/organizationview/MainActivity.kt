@@ -1,5 +1,6 @@
 package com.example.lukaszreszetow.organizationview
 
+import android.content.Intent
 import android.graphics.Point
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -15,8 +16,7 @@ import kotlinx.android.synthetic.main.organization_item.*
 class MainActivity : AppCompatActivity(), OrganizationsAdapter.OrganizationInterface {
 
     override fun organizedPicked(organizationId: Int) {
-        Toast.makeText(this, "Kliknieto organizacje numer : $organizationId!", Toast.LENGTH_LONG)
-            .show()
+        startActivity(Intent(this, OrganizationDetailsActivity::class.java))
     }
 
     var sortedList: List<OrganizationListObject> = listOf()

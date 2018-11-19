@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_columnWeight="1"
+    android:layout_gravity="fill"
+    android:layout_marginLeft="6dp"
+    android:layout_marginTop="-5dp"
+    android:layout_marginRight="6dp">
+
+    <RelativeLayout
+        android:id="@+id/sliderHeaderIconContainer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:padding="4dp"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/sliderHeaderIcon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_mockup" />
+
+    </RelativeLayout>
+
+    <com.nex3z.notificationbadge.NotificationBadge
+        android:id="@+id/sliderHeaderBadge"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/sliderHeaderIconContainer"
+        app:nbBackground="@drawable/badge_background"
+        app:nbMaxTextLength="2" />
+</RelativeLayout>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">OrganizationView</string>
+    <string name="accept_invitation_overlay">Accept invitation to %s</string>
+</resources>

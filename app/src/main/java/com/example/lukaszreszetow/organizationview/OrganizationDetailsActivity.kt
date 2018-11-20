@@ -3,8 +3,10 @@ package com.example.lukaszreszetow.organizationview
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.organization_details_view.*
 import kotlinx.android.synthetic.main.organization_news_item.view.*
 import rx.Observable
@@ -32,6 +34,11 @@ class OrganizationDetailsActivity : AppCompatActivity() {
         if (intent.getBooleanExtra(IS_THIS_INVITATION_INTENT, true)) {
             organizationDetailsInvitationOverlay.visibility = View.VISIBLE
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.organization_details_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     private fun setupButtons() {
@@ -85,6 +92,10 @@ class OrganizationDetailsActivity : AppCompatActivity() {
         return when (item?.itemId) {
             android.R.id.home -> {
                 onBackPressed()
+                true
+            }
+            R.id.call_menu_item -> {
+                Toast.makeText(this, "Fake calling organizaiton :D", Toast.LENGTH_LONG).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)

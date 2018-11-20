@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/orgNewsIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/android_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/orgNewsMoreBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/arrow_more"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35" />
+
+    <TextView
+        android:id="@+id/orgNewsDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="480m"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintRight_toRightOf="@id/orgNewsMoreBT"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/orgNewsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Lorem ipsum dolor sit amet consectetur adipisc"
+        android:textColor="@color/mainColor"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@+id/orgNewsIcon"
+        app:layout_constraintBottom_toTopOf="@+id/orgNewsType"
+        app:layout_constraintRight_toLeftOf="@+id/orgNewsMoreBT"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/orgNewsType"
+        android:layout_width="0dp"
+        android:layout_marginBottom="4dp"
+        android:layout_height="wrap_content"
+        android:text="Ongoing situation, "
+        app:layout_constraintLeft_toLeftOf="@+id/orgNewsTitle"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:text="24m ago"
+        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/orgNewsType"
+        android:id="@+id/orgNewsDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</android.support.constraint.ConstraintLayout>

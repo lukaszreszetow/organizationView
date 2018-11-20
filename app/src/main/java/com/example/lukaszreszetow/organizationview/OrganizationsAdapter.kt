@@ -20,7 +20,7 @@ class OrganizationsAdapter(
     RecyclerView.Adapter<OrganizationsAdapter.ViewHolder>() {
 
     interface OrganizationInterface {
-        fun organizedPicked(organizationId: Int)
+        fun organizedPicked(organizationId: Int, isThisInvitation: Boolean)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -43,7 +43,7 @@ class OrganizationsAdapter(
         } else {
             val organizationObject = organizations[position]
             holder?.container?.setOnClickListener {
-                listener.organizedPicked(position)
+                listener.organizedPicked(position, organizationObject.isThisInvitation)
             }
             holder?.name?.text = organizationObject.organization.name
             when {

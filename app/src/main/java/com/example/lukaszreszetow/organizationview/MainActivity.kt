@@ -15,8 +15,13 @@ import kotlinx.android.synthetic.main.organization_item.*
 
 class MainActivity : AppCompatActivity(), OrganizationsAdapter.OrganizationInterface {
 
-    override fun organizedPicked(organizationId: Int) {
-        startActivity(Intent(this, OrganizationDetailsActivity::class.java))
+    override fun organizedPicked(organizationId: Int, isThisInvitation: Boolean) {
+        startActivity(Intent(this, OrganizationDetailsActivity::class.java).apply {
+            putExtra(
+                OrganizationDetailsActivity.IS_THIS_INVITATION_INTENT,
+                isThisInvitation
+            )
+        })
     }
 
     var sortedList: List<OrganizationListObject> = listOf()
